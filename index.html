@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="ALL">
+    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Cadastro de Produtos</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h1 class="card-header">Cadastro de Produtos</h1>
+                <div class="card-body">
+                    <form id="form" class="form">
+                        <div class="form-content">
+                            <label for="nomeProduto">Nome do Produto:</label>
+                            <input type="text" class="form-control" placeholder="Digite o nome do produto." name="nomeProduto" autocomplete="off" autofocus required>
+                        </div>
+
+                        <div class="form-content">
+                            <label for="descProduto">Descrição do Produto:</label>
+                            <input type="text" class="form-control" placeholder="Digite a descrição do produto." name="descProduto" autocomplete="off" required>                            
+                        </div>
+
+                        <div class="form-content">
+                            <label for="precoProduto">Preço do Produto:</label>
+                            <input type="number" min="1" step="any" class="form-control" placeholder="Digite o preço do produto R$." name="precoProduto" autocomplete="off" required>
+                           
+                            <p>Disponível para venda?</p>
+                            <div>
+                                <input type="radio" name="dispVenda" value="sim"/> Sim<br />
+                                <input type="radio" name="dispVenda" value="não"/> Não<br />
+                            </div>
+                            
+                            <button onclick="cadastrarProduto()" class="btn btn-primary" id="cadastrar">Cadastrar</button>
+                    </form>                    
+                    <table id="tblProdutos" class="table table-striped sortable">
+                        <thead>
+                            <tr>
+                                <th> Nome</th>
+                                <th> Descrição</th>
+                                <th> Preço R$</th>
+                                <th> Disponível?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <footer></footer>
+        <script src="js/jquery-3.7.1.min.js"></script>
+        <script src="js/sorttable.js"></script>
+        <script src="js/script.js"></script>
+</body>
+
+</html>

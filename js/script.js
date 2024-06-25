@@ -19,42 +19,46 @@ $(document).ready(function () {
     mostrarProdutos();
 });
 
-function checkFields() { 
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}
+
+function checkFields() {
     productName.addEventListener('blur', () => {
-        if(productName.value.length == 0){        
+        if (productName.value.length == 0) {
             labelNome.setAttribute('style', 'color: red')
             labelNome.innerHTML = '<strong>Nome do Produto: (Este campo é obrigatório.)</strong>'
             productName.setAttribute('style', 'border-color: red', 'autofocus')
             validNome = false
-        }else {
+        } else {
             labelNome.setAttribute('style', 'color: green')
             labelNome.innerHTML = 'Nome do Produto:'
             productName.setAttribute('style', 'border-color: green')
             validNome = true
         }
     })
-    
+
     productDesc.addEventListener('blur', () => {
-        if(productDesc.value.length == 0){
+        if (productDesc.value.length == 0) {
             labelDesc.setAttribute('style', 'color: red')
             labelDesc.innerHTML = '<strong>Descrição do Produto: (Este campo é obrigatório.)</strong>'
             productDesc.setAttribute('style', 'border-color: red')
             validDesc = false
-        }else {
+        } else {
             labelDesc.setAttribute('style', 'color: green')
             labelDesc.innerHTML = 'Descrição do Produto:'
             productDesc.setAttribute('style', 'border-color: green')
             validDesc = true
         }
     })
-    
+
     productPrice.addEventListener('blur', () => {
-        if(productPrice.value == 0){
+        if (productPrice.value == 0) {
             labelPreco.setAttribute('style', 'color: red')
             labelPreco.innerHTML = '<strong>Preço do Produto: (O valor não pode ser 0.)</strong>'
             productPrice.setAttribute('style', 'border-color: red')
             validPreco = false
-        }else {
+        } else {
             labelPreco.setAttribute('style', 'color: green')
             labelPreco.innerHTML = 'Preço do Produto:'
             productPrice.setAttribute('style', 'border-color: green')
@@ -79,23 +83,23 @@ function mostrarProdutos() {
     $('#tblProdutos tbody').append(html);
 }
 
-function validarCampos(){    
-    if(validNome && validDesc && validPreco){        
-        cadastrarProduto()                
-    }else {
+function validarCampos() {
+    if (validNome && validDesc && validPreco) {
+        cadastrarProduto()
+    } else {
         event.preventDefault()
         msgError.setAttribute('style', 'display: block')
         msgError.innerHTML = '<strong>Por favor, preencha todos os campos obrigatórios!</strong>'
     }
 }
 
-function cadastrarProduto() {      
+function cadastrarProduto() {
 
     item = {}
     item["nomeProduto"] = $('[name="nomeProduto"]').val();
     item["descProduto"] = $('[name="descProduto"]').val();
     item["precoProduto"] = $('[name="precoProduto"]').val();
-    item["dispVenda"] = $('[name="dispVenda"]:checked').val();    
+    item["dispVenda"] = $('[name="dispVenda"]:checked').val();
 
     listaProdutos.push(item);
     saveToStorage(listaProdutos);

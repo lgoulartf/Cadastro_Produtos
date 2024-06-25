@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="ALL">
-    <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -18,41 +18,47 @@
                 <h1 class="card-header">Cadastro de Produtos</h1>
 
                 <div id="msgError"></div>
-                
+
                 <div class="card-body">
-                    <form id="form" class="form">
+                    <form id="form" class="form" method="post">
                         <div class="form-content">
                             <label id="labelNome" for="nomeProduto">Nome do Produto:</label>
-                            <input type="text" class="form-control" id="productName" placeholder="Digite o nome do produto." name="nomeProduto" autocomplete="off" autofocus required>
+                            <input type="text" class="form-control" id="productName"
+                                placeholder="Digite o nome do produto." name="nomeProduto" autocomplete="off" autofocus
+                                required>
                         </div>
 
                         <div class="form-content">
                             <label id="labelDesc" for="descProduto">Descrição do Produto:</label>
-                            <input type="text" class="form-control" id="productDesc" placeholder="Digite a descrição do produto." name="descProduto" autocomplete="off" required>                            
+                            <input type="text" class="form-control" id="productDesc"
+                                placeholder="Digite a descrição do produto." name="descProduto" autocomplete="off"
+                                required>
                         </div>
 
                         <div class="form-content">
                             <label id="labelPreco" for="precoProduto">Preço do Produto:</label>
-                            <input type="number" min="1" step="any" class="form-control" id="productPrice" placeholder="Digite o preço do produto R$." name="precoProduto" autocomplete="off" required>                                                    
-                             
+                            <input type="number" min="1" step="any" class="form-control" id="productPrice"
+                                placeholder="Digite o preço do produto R$." name="precoProduto" autocomplete="off"
+                                required>
+
                             <div class="box-select">
-                                <div>                                
-                                    <p>Disponível para venda?</p>
-                                    <input type="radio" id="sim" name="dispVenda" value="Sim"/>
-                                    <label for="sim">Sim</label>
-                            </div>
                                 <div>
-                                    <input type="radio" id="nao" name="dispVenda" value="Não"/>
+                                    <p>Disponível para venda?</p>
+                                    <input type="radio" id="sim" name="dispVenda" value="Sim" />
+                                    <label for="sim">Sim</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="nao" name="dispVenda" value="Não" />
                                     <label for="nao">Não</label>
                                 </div>
-                        </div>
-                                                    
+                            </div>
+
                             <button onclick="validarCampos()" class="btn btn-primary" id="cadastrar">Cadastrar</button>
                     </form>
 
-                    <hr>
+                    <hr class="rounded">
                     <p id="productList">Produtos Cadastrados</p>
-                    <hr>
+                    <hr class="rounded">
 
                     <table id="tblProdutos" class="table table-striped sortable">
                         <thead>

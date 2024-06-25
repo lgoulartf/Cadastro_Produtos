@@ -1,3 +1,10 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .container {
     margin: 14px;
     max-width: 600px;
@@ -13,6 +20,7 @@
 }
 
 .form-content label {
+    font-weight: 490;
     display: inline-block;
     margin-bottom: 4px;
 }
@@ -24,3 +32,32 @@
     cursor: pointer;
 }
 
+.btn {
+    font-weight: 490;
+}
+
+#msgError {
+    text-align: center;
+    color: #920000fd;
+    background-color: #ffbbbb;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+}
+
+.box-select {
+    font-weight: 490;
+    margin-top: 18px;
+}
+
+#productList {
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+    margin-top: 18px;
+}
+
+hr.rounded {
+    border-top: 8px solid #bbb;
+    border-radius: 3px;
+}

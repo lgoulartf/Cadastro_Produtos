@@ -16,30 +16,44 @@
         <div class="container">
             <div class="card">
                 <h1 class="card-header">Cadastro de Produtos</h1>
+
+                <div id="msgError"></div>
+                
                 <div class="card-body">
                     <form id="form" class="form">
                         <div class="form-content">
-                            <label for="nomeProduto">Nome do Produto:</label>
-                            <input type="text" class="form-control" placeholder="Digite o nome do produto." name="nomeProduto" autocomplete="off" autofocus required>
+                            <label id="labelNome" for="nomeProduto">Nome do Produto:</label>
+                            <input type="text" class="form-control" id="productName" placeholder="Digite o nome do produto." name="nomeProduto" autocomplete="off" autofocus required>                            
                         </div>
 
                         <div class="form-content">
-                            <label for="descProduto">Descrição do Produto:</label>
-                            <input type="text" class="form-control" placeholder="Digite a descrição do produto." name="descProduto" autocomplete="off" required>                            
+                            <label id="labelDesc" for="descProduto">Descrição do Produto:</label>
+                            <input type="text" class="form-control" id="productDesc" placeholder="Digite a descrição do produto." name="descProduto" autocomplete="off" required>                            
                         </div>
 
                         <div class="form-content">
-                            <label for="precoProduto">Preço do Produto:</label>
-                            <input type="number" min="1" step="any" class="form-control" placeholder="Digite o preço do produto R$." name="precoProduto" autocomplete="off" required>
-                           
-                            <p>Disponível para venda?</p>
-                            <div>
-                                <input type="radio" name="dispVenda" value="sim"/> Sim<br />
-                                <input type="radio" name="dispVenda" value="não"/> Não<br />
+                            <label id="labelPreco" for="precoProduto">Preço do Produto:</label>
+                            <input type="number" min="1" step="any" class="form-control" id="productPrice" placeholder="Digite o preço do produto R$." name="precoProduto" autocomplete="off" required>                                                    
+                             
+                            <div class="box-select">
+                                <div>                                
+                                    <p>Disponível para venda?</p>
+                                    <input type="radio" id="sim" name="dispVenda" value="Sim"/>
+                                    <label for="sim">Sim</label>
                             </div>
-                            
-                            <button onclick="cadastrarProduto()" class="btn btn-primary" id="cadastrar">Cadastrar</button>
-                    </form>                    
+                                <div>
+                                    <input type="radio" id="nao" name="dispVenda" value="Não"/>
+                                    <label for="nao">Não</label>
+                                </div>
+                        </div>
+                                                    
+                            <button onclick="validaCampos()" class="btn btn-primary" id="cadastrar">Cadastrar</button>
+                    </form>
+
+                    <hr class="rounded">
+                    <p id="productList">Produtos Cadastrados</p>
+                    <hr class="rounded">
+
                     <table id="tblProdutos" class="table table-striped sortable">
                         <thead>
                             <tr>
@@ -52,7 +66,6 @@
                         <tbody>
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

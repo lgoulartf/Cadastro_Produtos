@@ -108,3 +108,37 @@ function cadastrarProduto() {
 function saveToStorage(obj) {
     localStorage.setItem('produtos', JSON.stringify(obj));
 }
+
+var validationLib = {
+    fields: {
+        produtoNome: document.querySelector('#productName'),
+        produtoDesc: document.querySelector('#productDesc'),
+        produtoPreco: document.querySelector('#productPrice')
+    },
+    labels: {
+       labelNome: document.querySelector('#labelNome'),
+       labelDesc: document.querySelector('#labelDesc'),
+       labelPreco: document.querySelector('#labelPreco')
+    },
+    validators: {
+        validNome: false,
+        validDesc: false,
+        validPreco: false 
+    },
+    checkName: function(){
+        this.fields.produtoNome.addEventListener('blur', () => {
+            if(this.fields.produtoNome.value.length == 0){        
+                this.labels.labelNome.setAttribute('style', 'color: red')
+                this.labels.labelNome.innerHTML = '<strong>Nome do Produto: (Este campo é obrigatório.)</strong>'
+                this.fields.produtoNome.setAttribute('style', 'border-color: red', 'autofocus')
+                this.validators.validNome = false
+            }else {
+                this.labels.labelNome.setAttribute('style', 'color: green')
+                this.labels.labelNome.innerHTML = 'Nome do Produto:'
+                this.fields.produtoNome.setAttribute('style', 'border-color: green')
+                validNome = true
+            }
+        })
+    }
+
+};

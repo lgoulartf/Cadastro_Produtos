@@ -14,8 +14,13 @@ let validPreco = false
 
 let msgError = document.querySelector('#msgError')
 
-function checkFields() {
-    productName.addEventListener('keyup', () => {
+$(document).ready(function () {
+    checkFields();
+    mostrarProdutos();
+});
+
+function checkFields() { 
+    productName.addEventListener('blur', () => {
         if(productName.value.length == 0){        
             labelNome.setAttribute('style', 'color: red')
             labelNome.innerHTML = '<strong>Nome do Produto: (Este campo é obrigatório.)</strong>'
@@ -29,7 +34,7 @@ function checkFields() {
         }
     })
     
-    productDesc.addEventListener('keyup', () => {
+    productDesc.addEventListener('blur', () => {
         if(productDesc.value.length == 0){
             labelDesc.setAttribute('style', 'color: red')
             labelDesc.innerHTML = '<strong>Descrição do Produto: (Este campo é obrigatório.)</strong>'
@@ -43,7 +48,7 @@ function checkFields() {
         }
     })
     
-    productPrice.addEventListener('keyup', () => {
+    productPrice.addEventListener('blur', () => {
         if(productPrice.value == 0){
             labelPreco.setAttribute('style', 'color: red')
             labelPreco.innerHTML = '<strong>Preço do Produto: (O valor não pode ser 0.)</strong>'
@@ -58,12 +63,6 @@ function checkFields() {
     })
 }
 
-
-$(document).ready(function () {
-    mostrarProdutos();
-});
-
-window.onload = checkFields();
 
 function mostrarProdutos() {
 
@@ -80,7 +79,7 @@ function mostrarProdutos() {
     $('#tblProdutos tbody').append(html);
 }
 
-function validaCampos(){
+function validarCampos(){    
     if(validNome && validDesc && validPreco){        
         cadastrarProduto()                
     }else {
@@ -96,9 +95,7 @@ function cadastrarProduto() {
     item["nomeProduto"] = $('[name="nomeProduto"]').val();
     item["descProduto"] = $('[name="descProduto"]').val();
     item["precoProduto"] = $('[name="precoProduto"]').val();
-    item["dispVenda"] = $('[name="dispVenda"]:checked').val();
-
-    //TODO: VALIDAR CAMPOS OBRIGATORIOS
+    item["dispVenda"] = $('[name="dispVenda"]:checked').val();    
 
     listaProdutos.push(item);
     saveToStorage(listaProdutos);
